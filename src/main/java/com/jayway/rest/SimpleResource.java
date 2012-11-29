@@ -2,8 +2,6 @@ package com.jayway.rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Response;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
@@ -12,8 +10,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class SimpleResource {
 	@GET
-	public Response get(@QueryParam("param") String msg) {
-		return Response.ok("param was: " + msg).build();
+	public String get() {
+		return "This is public";
+	}
+
+	@GET
+	@Path("greet")
+    @PreAuthorize("isAuthenticated()")
+	public String yourEyesOnly() {
+		return "Hello world";
 	}
 
 	@GET
