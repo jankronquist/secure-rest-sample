@@ -1,4 +1,4 @@
-package com.jayway.rest;
+package com.jayway.template.sample;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

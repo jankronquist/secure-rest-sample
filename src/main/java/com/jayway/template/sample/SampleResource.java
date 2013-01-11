@@ -1,17 +1,27 @@
-package com.jayway.rest;
+package com.jayway.template.sample;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
-@Path("/simple")
+@Path("/sample")
 @Component
-public class SimpleResource {
+public class SampleResource {
+	
 	@GET
 	public String get() {
 		return "This is public";
+	}
+
+	@GET
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Path("developer")
+	public PersonDTO developer() {
+		return new PersonDTO("Jan", "Kronquist");
 	}
 
 	@GET

@@ -14,7 +14,7 @@
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>com.jayway.rest.WebConfig</param-value>
+        <param-value>com.jayway.template.boot.WebConfig</param-value>
     </context-param>
 
     <filter>
