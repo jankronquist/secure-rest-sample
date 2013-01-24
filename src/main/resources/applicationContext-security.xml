@@ -17,6 +17,7 @@
                 <openid-attribute name="lastname" type="http://axschema.org/namePerson/last" required="true"/>
             </attribute-exchange>
         </openid-login>
+        <anonymous enabled='false'/>
     </http>
 
     <global-method-security pre-post-annotations="enabled" proxy-target-class="true"/>

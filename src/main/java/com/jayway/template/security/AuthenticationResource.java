@@ -5,8 +5,12 @@ import java.io.InputStream;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -21,14 +25,28 @@ public class AuthenticationResource {
 		return new ClassPathResource("forceGoogleLogin.html").getInputStream();
 	}
 
+    @GET
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Path("isLoggedIn")
+    public Boolean isLoggedIn() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication != null;
+    }
+
 	@GET
-	@Path("userId")
-	public String userId() throws IOException {
+	@Path("status")
+	public UserStatus status() throws IOException {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserStatus status = new UserStatus();
+
 		if (authentication != null) {
-			return authentication.getName();
+            status.user = authentication.getName();
+            status.authenticated = true;
 		} else {
-			return "N/A";
+            status.user = "";
+            status.authenticated = false;
 		}
+
+        return status;
 	}
 }
