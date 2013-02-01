@@ -18,21 +18,6 @@ import org.springframework.stereotype.Component;
 @Path("/authentication")
 @Component
 public class AuthenticationResource {
-	
-	@GET
-	@Path("google")
-	public InputStream google() throws IOException {
-		return new ClassPathResource("forceGoogleLogin.html").getInputStream();
-	}
-
-    @GET
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    @Path("isLoggedIn")
-    public Boolean isLoggedIn() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return authentication != null;
-    }
-
 	@GET
 	@Path("status")
 	public UserStatus status() throws IOException {

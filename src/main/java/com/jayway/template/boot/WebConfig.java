@@ -9,6 +9,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
 
 @Configuration
 @ComponentScan("com.jayway.template")
@@ -21,4 +23,9 @@ public class WebConfig {
 	public PasswordEncoder passwordEncoder(Environment env) {
 		return new StandardPasswordEncoder(env.getProperty("security.secret"));
 	}
+
+    @Bean(name="ep403")
+    public Http403ForbiddenEntryPoint entryPoint() {
+        return new Http403ForbiddenEntryPoint();
+    }
 }
