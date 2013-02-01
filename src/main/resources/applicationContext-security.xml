@@ -7,19 +7,22 @@
                         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-    <http use-expressions="true">
+
+    <http use-expressions="true" entry-point-ref="ep403">
     		<intercept-url pattern="/welcome.html" access="isAuthenticated()"/>
         <http-basic/>
-        <openid-login default-target-url="/welcome.html">
+
+        <openid-login default-target-url="/" always-use-default-target="true" >
             <attribute-exchange>
                 <openid-attribute name="email" type="http://axschema.org/contact/email" required="true" count="1"/>
                 <openid-attribute name="firstname" type="http://axschema.org/namePerson/first" required="true"/>
                 <openid-attribute name="lastname" type="http://axschema.org/namePerson/last" required="true"/>
             </attribute-exchange>
         </openid-login>
+        <anonymous enabled='false'/>
     </http>
 
-    <global-method-security pre-post-annotations="enabled" proxy-target-class="true"/>
+    <global-method-security pre-post-annotations="enabled" proxy-target-class="true" />
 
     <authentication-manager>
         <authentication-provider

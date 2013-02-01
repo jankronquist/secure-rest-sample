@@ -1,0 +1,13 @@
+<div ng-controller="RestrictedCtrl" xmlns="http://www.w3.org/1999/html">
+    <h1>Restricted!</h1>
+
+    <div ng-show="greet">
+        <p>As you are authenticated, you will get the following nice greeting...</p>
+        <blockquote>{{greet}}</blockquote>
+    </div>
+
+    <div ng-show="secret">
+        <p>If you have the role <em>secret</em>, you will see the secret message</p>
+        <blockquote>{{secret}}</blockquote>
+    </div>
+</div>

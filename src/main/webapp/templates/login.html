@@ -1,0 +1,19 @@
+<form id="googleLoginForm" action="/j_spring_openid_security_check" method="post" ng-hide="isAuthenticated">
+    <h1>Login</h1>
+
+
+    <input name="openid_identifier" type="hidden" value="https://www.google.com/accounts/o8/id"/>
+    <input name="openid.ns.pape" type="hidden" value="http://specs.openid.net/extensions/pape/1.0"/>
+    <input name="openid.pape.max_auth_age" type="hidden" value="0"/>
+
+    <p>Welcome to the Secure REST Sample. If you want to access the restricted parts of this site, please login using
+        Google.
+    </p>
+    <p>
+        <input name="submit" class="btn btn-primary" value="Login using Google" type="submit"/>
+    </p>
+</form>
+<div ng-show="isAuthenticated">
+    <h1>You're already logged in</h1>
+    <p>What are you doing here?!</p>
+</div>
