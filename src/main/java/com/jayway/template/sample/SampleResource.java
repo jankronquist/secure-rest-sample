@@ -8,6 +8,9 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Path("/sample")
 @Component
 public class SampleResource {
@@ -19,9 +22,9 @@ public class SampleResource {
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	@Path("developer")
-	public PersonDTO developer() {
-		return new PersonDTO("Jan", "Kronquist");
+	@Path("developers")
+	public List<PersonDTO> developers() {
+		return Arrays.asList(new PersonDTO("Jan", "Kronquist"), new PersonDTO("Oskar", "Wickström"));
 	}
 
 	@GET
