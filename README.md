@@ -17,3 +17,6 @@ Good starting points:
 * SampleResource - an example resource that includes resources requiring authentication & authorization
 * angular.html - the only html page
 * controllers.js - a basic angular controller
+
+Notice that this project is not intended to show best practices, 
+but only to get all the parts of a minimal application working together.
