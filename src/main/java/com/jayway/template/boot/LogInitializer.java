@@ -7,6 +7,9 @@ import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.jul.LevelChangePropagator;
 
 public class LogInitializer {
+	/**
+	 * Make sure that all Java Util Logging in done over SLF4J.
+	 */
     public static void initializeJavaUtilLoggingBridge() {
         SLF4JBridgeHandler.removeHandlersForRootLogger();
         SLF4JBridgeHandler.install();
