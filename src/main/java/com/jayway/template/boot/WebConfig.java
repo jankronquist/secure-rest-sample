@@ -9,7 +9,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
-import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
 
 @Configuration
@@ -17,6 +16,9 @@ import org.springframework.security.web.authentication.Http403ForbiddenEntryPoin
 @ImportResource("classpath:applicationContext-security.xml")
 @PropertySource("web-default.properties")
 public class WebConfig {
+	static {
+		LogInitializer.initializeJavaUtilLoggingBridge();
+	}
 	
 	@Bean(name="passwordEncoder")
 	@Autowired
